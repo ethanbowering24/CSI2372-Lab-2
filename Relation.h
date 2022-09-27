@@ -12,8 +12,6 @@ struct Pair
         }
     };
 
-
-
 class Relation
 {
     private:
@@ -38,6 +36,5 @@ class Relation
         bool transitive();
         bool is_function();
         Relation inverse();
-        Relation combination();
-        
+        Relation combination();      
 };
