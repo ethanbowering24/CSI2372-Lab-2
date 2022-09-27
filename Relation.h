@@ -39,8 +39,5 @@ class Relation
         bool is_function();
         Relation inverse();
         Relation combination();
-
-
         
-
 };

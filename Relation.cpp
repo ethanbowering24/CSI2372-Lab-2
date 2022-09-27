@@ -6,8 +6,6 @@ Relation::Relation(){
     relations = {};
 };
 
-
-
 Relation::Relation(Relation &copy){
     set = copy.set;
     relations = copy.relations;
@@ -35,8 +33,6 @@ void Relation::remove_element(Pair element){
     }
 }
 
-        
-
 bool Relation::is_member(Pair element){
     if (std::find(relations.begin(), relations.end(), element) == relations.end())
     {
@@ -52,7 +48,6 @@ bool Relation::equal(Relation otherRelation){
         {
             return false;
         }
-        
     }
 
     for (std::vector<Pair>::iterator itr = otherRelation.relations.begin(); itr != otherRelation.relations.end(); itr++)
@@ -60,10 +55,8 @@ bool Relation::equal(Relation otherRelation){
         if (!(is_member(*itr)))
         {
             return false;
-        }
-        
-    }
-    
+        }   
+    } 
     return true;
 }
 
@@ -77,7 +70,6 @@ bool Relation::reflexive(){
             return false;
         }
     }
-
     return true;
         
 }
@@ -104,28 +96,13 @@ bool Relation::symmetric(){
         }
         
     }
-    
     return true;
 }
-
-/*bool Relation::asymmetric(){
-
-    for (int i = 0; i < cardinality(); i++)
-    {
-        if (is_member({relations[i].second, relations[i].first}))
-        {
-            return false;
-        }
-        
-    }
-    
-    return true;    
-}*/
 
 bool Relation::asymmetric(){
     for (std::vector<Pair>::iterator itr = relations.begin(); itr != relations.end(); itr++)
     {
-        if (is_member({itr->second, itr->first}))
+        if ((itr->first!=itr->second)&&(is_member({itr->second, itr->first})))
         {
             return false;
         }
