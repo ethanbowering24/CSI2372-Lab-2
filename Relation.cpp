@@ -113,19 +113,26 @@ bool Relation::transitive(){
 
     for (std::vector<Pair>::iterator itr1 = relations.begin(); itr1 != relations.end(); itr1++)
     {
-        for (std::vector<Pair>::iterator itr2 = relations.begin(); itr2 != relations.end(); itr2++)
+        if (itr1->first!=itr1->second)
         {
-            if (itr1->second==itr2->first)
+            for (std::vector<Pair>::iterator itr2 = relations.begin(); itr2 != relations.end(); itr2++)
             {
-                for (std::vector<Pair>::iterator itr3 = relations.begin(); itr3 != relations.end(); itr3++)
+                if (itr2->first!=itr2->second)
                 {
-                    if (!(is_member({itr1->first,itr2->second})))
+                    if (itr1->second==itr2->first)
                     {
-                        return false;
+                        for (std::vector<Pair>::iterator itr3 = relations.begin(); itr3 != relations.end(); itr3++)
+                        {
+                            if (!(is_member({itr1->first,itr2->second})))
+                            {
+                                return false;
+                            }
+                        }
                     }
                 }
-            }
-        } 
+                
+            } 
+        }
     } 
     return true;
 }
