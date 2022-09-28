@@ -121,12 +121,9 @@ bool Relation::transitive(){
                 {
                     if (itr1->second==itr2->first)
                     {
-                        for (std::vector<Pair>::iterator itr3 = relations.begin(); itr3 != relations.end(); itr3++)
+                        if (!(is_member({itr1->first,itr2->second})))
                         {
-                            if (!(is_member({itr1->first,itr2->second})))
-                            {
-                                return false;
-                            }
+                            return false;
                         }
                     }
                 }
