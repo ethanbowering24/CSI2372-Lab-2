@@ -15,7 +15,6 @@ struct Pair
 class Relation
 {
     private:
-
         Set set;
         std::vector<Pair> relations;
         

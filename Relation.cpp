@@ -7,7 +7,11 @@ Relation::Relation(){
 };
 
 Relation::Relation(Relation &copy){
-    set = copy.set;
+    for (int i = 0; i < copy.set.cardinality(); i++)
+    {
+        set.add_element(copy.set.get_item(i));
+    }
+
     relations = copy.relations;
 }
 
@@ -110,7 +114,6 @@ bool Relation::asymmetric(){
 }
 
 bool Relation::transitive(){
-
     for (std::vector<Pair>::iterator itr1 = relations.begin(); itr1 != relations.end(); itr1++)
     {
         if (itr1->first!=itr1->second)
@@ -126,8 +129,7 @@ bool Relation::transitive(){
                             return false;
                         }
                     }
-                }
-                
+                }                
             } 
         }
     } 
