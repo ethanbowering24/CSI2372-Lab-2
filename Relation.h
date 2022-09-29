@@ -35,5 +35,5 @@ class Relation
         bool transitive();
         bool is_function();
         Relation inverse();
-        Relation combination();      
+        Relation combination(Relation);      
 };

@@ -154,12 +154,36 @@ bool Relation::is_function(){
 }
 
 Relation Relation::inverse(){
-    Relation x;
-    return x;
+    Relation inverse;
+    for (std::vector<Pair>::iterator itr = relations.begin(); itr != relations.end(); itr++)
+    {
+        inverse.add_element({itr->second, itr->first});
+    }
+    return inverse;
 }
 
-Relation Relation::combination(){
-    Relation x;
-    return x;
+Relation Relation::combination(Relation other){
+    Relation combo;
+
+    if (!(set.equal(other.set)))
+    {
+        return combo;
+    }
+
+    for (std::vector<Pair>::iterator itr1 = relations.begin(); itr1 != relations.end(); itr1++)
+    {
+        {
+            for (std::vector<Pair>::iterator itr2 = other.relations.begin(); itr2 != other.relations.end(); itr2++)
+            {
+                {
+                    if (itr1->second==itr2->first)
+                    {
+                        combo.add_element({itr1->first,itr2->second});   
+                    }
+                }                
+            } 
+        }
+    } 
+    return combo;
 }
 
